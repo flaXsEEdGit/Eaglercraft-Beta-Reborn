@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-import java.util.Random;
+import net.lax1dude.eaglercraft.Random;
 
 public class BlockFurnace extends BlockContainer {
 	private final boolean isActive;
@@ -26,19 +26,19 @@ public class BlockFurnace extends BlockContainer {
 		int var7 = var1.getBlockId(var2 - 1, var3, var4);
 		int var8 = var1.getBlockId(var2 + 1, var3, var4);
 		byte var9 = 3;
-		if(Block.opaqueCubeLookup[var5] && !Block.opaqueCubeLookup[var6]) {
+		if (Block.opaqueCubeLookup[var5] && !Block.opaqueCubeLookup[var6]) {
 			var9 = 3;
 		}
 
-		if(Block.opaqueCubeLookup[var6] && !Block.opaqueCubeLookup[var5]) {
+		if (Block.opaqueCubeLookup[var6] && !Block.opaqueCubeLookup[var5]) {
 			var9 = 2;
 		}
 
-		if(Block.opaqueCubeLookup[var7] && !Block.opaqueCubeLookup[var8]) {
+		if (Block.opaqueCubeLookup[var7] && !Block.opaqueCubeLookup[var8]) {
 			var9 = 5;
 		}
 
-		if(Block.opaqueCubeLookup[var8] && !Block.opaqueCubeLookup[var7]) {
+		if (Block.opaqueCubeLookup[var8] && !Block.opaqueCubeLookup[var7]) {
 			var9 = 4;
 		}
 
@@ -46,50 +46,53 @@ public class BlockFurnace extends BlockContainer {
 	}
 
 	public int getBlockTexture(IBlockAccess var1, int var2, int var3, int var4, int var5) {
-		if(var5 == 1) {
+		if (var5 == 1) {
 			return this.blockIndexInTexture + 17;
-		} else if(var5 == 0) {
+		} else if (var5 == 0) {
 			return this.blockIndexInTexture + 17;
 		} else {
 			int var6 = var1.getBlockMetadata(var2, var3, var4);
-			return var5 != var6 ? this.blockIndexInTexture : (this.isActive ? this.blockIndexInTexture + 16 : this.blockIndexInTexture - 1);
+			return var5 != var6 ? this.blockIndexInTexture
+					: (this.isActive ? this.blockIndexInTexture + 16 : this.blockIndexInTexture - 1);
 		}
 	}
 
 	public void randomDisplayTick(World var1, int var2, int var3, int var4, Random var5) {
-		if(this.isActive) {
+		if (this.isActive) {
 			int var6 = var1.getBlockMetadata(var2, var3, var4);
-			float var7 = (float)var2 + 0.5F;
-			float var8 = (float)var3 + 0.0F + var5.nextFloat() * 6.0F / 16.0F;
-			float var9 = (float)var4 + 0.5F;
+			float var7 = (float) var2 + 0.5F;
+			float var8 = (float) var3 + 0.0F + var5.nextFloat() * 6.0F / 16.0F;
+			float var9 = (float) var4 + 0.5F;
 			float var10 = 0.52F;
 			float var11 = var5.nextFloat() * 0.6F - 0.3F;
-			if(var6 == 4) {
-				var1.spawnParticle("smoke", (double)(var7 - var10), (double)var8, (double)(var9 + var11), 0.0D, 0.0D, 0.0D);
-				var1.spawnParticle("flame", (double)(var7 - var10), (double)var8, (double)(var9 + var11), 0.0D, 0.0D, 0.0D);
-			} else if(var6 == 5) {
-				var1.spawnParticle("smoke", (double)(var7 + var10), (double)var8, (double)(var9 + var11), 0.0D, 0.0D, 0.0D);
-				var1.spawnParticle("flame", (double)(var7 + var10), (double)var8, (double)(var9 + var11), 0.0D, 0.0D, 0.0D);
-			} else if(var6 == 2) {
-				var1.spawnParticle("smoke", (double)(var7 + var11), (double)var8, (double)(var9 - var10), 0.0D, 0.0D, 0.0D);
-				var1.spawnParticle("flame", (double)(var7 + var11), (double)var8, (double)(var9 - var10), 0.0D, 0.0D, 0.0D);
-			} else if(var6 == 3) {
-				var1.spawnParticle("smoke", (double)(var7 + var11), (double)var8, (double)(var9 + var10), 0.0D, 0.0D, 0.0D);
-				var1.spawnParticle("flame", (double)(var7 + var11), (double)var8, (double)(var9 + var10), 0.0D, 0.0D, 0.0D);
+			if (var6 == 4) {
+				var1.spawnParticle("smoke", (double) (var7 - var10), (double) var8, (double) (var9 + var11), 0.0D, 0.0D, 0.0D);
+				var1.spawnParticle("flame", (double) (var7 - var10), (double) var8, (double) (var9 + var11), 0.0D, 0.0D, 0.0D);
+			} else if (var6 == 5) {
+				var1.spawnParticle("smoke", (double) (var7 + var10), (double) var8, (double) (var9 + var11), 0.0D, 0.0D, 0.0D);
+				var1.spawnParticle("flame", (double) (var7 + var10), (double) var8, (double) (var9 + var11), 0.0D, 0.0D, 0.0D);
+			} else if (var6 == 2) {
+				var1.spawnParticle("smoke", (double) (var7 + var11), (double) var8, (double) (var9 - var10), 0.0D, 0.0D, 0.0D);
+				var1.spawnParticle("flame", (double) (var7 + var11), (double) var8, (double) (var9 - var10), 0.0D, 0.0D, 0.0D);
+			} else if (var6 == 3) {
+				var1.spawnParticle("smoke", (double) (var7 + var11), (double) var8, (double) (var9 + var10), 0.0D, 0.0D, 0.0D);
+				var1.spawnParticle("flame", (double) (var7 + var11), (double) var8, (double) (var9 + var10), 0.0D, 0.0D, 0.0D);
 			}
 
 		}
 	}
 
 	public int getBlockTextureFromSide(int var1) {
-		return var1 == 1 ? this.blockIndexInTexture + 17 : (var1 == 0 ? this.blockIndexInTexture + 17 : (var1 == 3 ? this.blockIndexInTexture - 1 : this.blockIndexInTexture));
+		return var1 == 1 ? this.blockIndexInTexture + 17
+				: (var1 == 0 ? this.blockIndexInTexture + 17
+						: (var1 == 3 ? this.blockIndexInTexture - 1 : this.blockIndexInTexture));
 	}
 
 	public boolean blockActivated(World var1, int var2, int var3, int var4, EntityPlayer var5) {
-		if(var1.multiplayerWorld) {
+		if (var1.multiplayerWorld) {
 			return true;
 		} else {
-			TileEntityFurnace var6 = (TileEntityFurnace)var1.getBlockTileEntity(var2, var3, var4);
+			TileEntityFurnace var6 = (TileEntityFurnace) var1.getBlockTileEntity(var2, var3, var4);
 			var5.displayGUIFurnace(var6);
 			return true;
 		}
@@ -98,7 +101,7 @@ public class BlockFurnace extends BlockContainer {
 	public static void updateFurnaceBlockState(boolean var0, World var1, int var2, int var3, int var4) {
 		int var5 = var1.getBlockMetadata(var2, var3, var4);
 		TileEntity var6 = var1.getBlockTileEntity(var2, var3, var4);
-		if(var0) {
+		if (var0) {
 			var1.setBlockWithNotify(var2, var3, var4, Block.stoneOvenActive.blockID);
 		} else {
 			var1.setBlockWithNotify(var2, var3, var4, Block.stoneOvenIdle.blockID);
@@ -113,20 +116,20 @@ public class BlockFurnace extends BlockContainer {
 	}
 
 	public void onBlockPlacedBy(World var1, int var2, int var3, int var4, EntityLiving var5) {
-		int var6 = MathHelper.floor_double((double)(var5.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-		if(var6 == 0) {
+		int var6 = MathHelper.floor_double((double) (var5.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+		if (var6 == 0) {
 			var1.setBlockMetadataWithNotify(var2, var3, var4, 2);
 		}
 
-		if(var6 == 1) {
+		if (var6 == 1) {
 			var1.setBlockMetadataWithNotify(var2, var3, var4, 5);
 		}
 
-		if(var6 == 2) {
+		if (var6 == 2) {
 			var1.setBlockMetadataWithNotify(var2, var3, var4, 3);
 		}
 
-		if(var6 == 3) {
+		if (var6 == 3) {
 			var1.setBlockMetadataWithNotify(var2, var3, var4, 4);
 		}
 

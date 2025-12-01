@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-import java.util.Random;
+import net.lax1dude.eaglercraft.Random;
 
 public class BlockSnow extends Block {
 	protected BlockSnow(int var1, int var2) {
@@ -23,7 +23,8 @@ public class BlockSnow extends Block {
 
 	public boolean canPlaceBlockAt(World var1, int var2, int var3, int var4) {
 		int var5 = var1.getBlockId(var2, var3 - 1, var4);
-		return var5 != 0 && Block.blocksList[var5].isOpaqueCube() ? var1.getBlockMaterial(var2, var3 - 1, var4).getIsSolid() : false;
+		return var5 != 0 && Block.blocksList[var5].isOpaqueCube() ? var1.getBlockMaterial(var2, var3 - 1, var4).getIsSolid()
+				: false;
 	}
 
 	public void onNeighborBlockChange(World var1, int var2, int var3, int var4, int var5) {
@@ -31,7 +32,7 @@ public class BlockSnow extends Block {
 	}
 
 	private boolean func_314_h(World var1, int var2, int var3, int var4) {
-		if(!this.canPlaceBlockAt(var1, var2, var3, var4)) {
+		if (!this.canPlaceBlockAt(var1, var2, var3, var4)) {
 			this.dropBlockAsItem(var1, var2, var3, var4, var1.getBlockMetadata(var2, var3, var4));
 			var1.setBlockWithNotify(var2, var3, var4, 0);
 			return false;
@@ -43,10 +44,11 @@ public class BlockSnow extends Block {
 	public void harvestBlock(World var1, int var2, int var3, int var4, int var5) {
 		int var6 = Item.snowball.shiftedIndex;
 		float var7 = 0.7F;
-		double var8 = (double)(var1.rand.nextFloat() * var7) + (double)(1.0F - var7) * 0.5D;
-		double var10 = (double)(var1.rand.nextFloat() * var7) + (double)(1.0F - var7) * 0.5D;
-		double var12 = (double)(var1.rand.nextFloat() * var7) + (double)(1.0F - var7) * 0.5D;
-		EntityItem var14 = new EntityItem(var1, (double)var2 + var8, (double)var3 + var10, (double)var4 + var12, new ItemStack(var6, 1, 0));
+		double var8 = (double) (var1.rand.nextFloat() * var7) + (double) (1.0F - var7) * 0.5D;
+		double var10 = (double) (var1.rand.nextFloat() * var7) + (double) (1.0F - var7) * 0.5D;
+		double var12 = (double) (var1.rand.nextFloat() * var7) + (double) (1.0F - var7) * 0.5D;
+		EntityItem var14 = new EntityItem(var1, (double) var2 + var8, (double) var3 + var10, (double) var4 + var12,
+				new ItemStack(var6, 1, 0));
 		var14.delayBeforeCanPickup = 10;
 		var1.entityJoinedWorld(var14);
 		var1.setBlockWithNotify(var2, var3, var4, 0);
@@ -61,7 +63,7 @@ public class BlockSnow extends Block {
 	}
 
 	public void updateTick(World var1, int var2, int var3, int var4, Random var5) {
-		if(var1.getSavedLightValue(EnumSkyBlock.Block, var2, var3, var4) > 11) {
+		if (var1.getSavedLightValue(EnumSkyBlock.Block, var2, var3, var4) > 11) {
 			this.dropBlockAsItem(var1, var2, var3, var4, var1.getBlockMetadata(var2, var3, var4));
 			var1.setBlockWithNotify(var2, var3, var4, 0);
 		}
@@ -70,6 +72,7 @@ public class BlockSnow extends Block {
 
 	public boolean shouldSideBeRendered(IBlockAccess var1, int var2, int var3, int var4, int var5) {
 		Material var6 = var1.getBlockMaterial(var2, var3, var4);
-		return var5 == 1 ? true : (var6 == this.blockMaterial ? false : super.shouldSideBeRendered(var1, var2, var3, var4, var5));
+		return var5 == 1 ? true
+				: (var6 == this.blockMaterial ? false : super.shouldSideBeRendered(var1, var2, var3, var4, var5));
 	}
 }
