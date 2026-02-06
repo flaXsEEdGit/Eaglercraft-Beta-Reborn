@@ -1,7 +1,9 @@
-# Eaglercraft Beta 1.3_01
+# Eaglercraft Beta Reborn
 
 ![preview](https://raw.githubusercontent.com/EaglerPorts/b1.3_01/refs/heads/main/img/mainmenu.png)
 :-:
+# It's Eaglercraft Beta, but reborn! (orignal desc below here) 
+
 This is a fully functional web port of Minecraft Beta 1.3_01, playable in any modern web browser. <br> It currently supports only Singleplayer, with Multiplayer being worked on.
 
 > [!WARNING]
